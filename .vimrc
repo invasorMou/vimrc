@@ -1,63 +1,49 @@
 """"""""""""""""""""""""""""""""""""""
-"InvaderMou VimRC
+"Mou's VimRC
 """"""""""""""""""""""""""""""""""""""
-set nocompatible
-set backspace=indent,eol,start
-set history=200
-set ruler
-set showcmd
-set noshowmode
+"Show line's number in file
 set number
-set showmatch
+"Show relative number to current line"
 set relativenumber
-set display=truncate
-set incsearch
-set hlsearch
-set ignorecase
-set smartcase
-set nrformats-=octal
-map Q gq
-syntax enable 
-"set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
-set tabstop=2 softtabstop=2 shiftwidth=2 smarttab
-set timeoutlen=200
-set ttimeout
-set ttimeoutlen=100
-set encoding=utf-8
-set fileformats=unix,dos,mac
-filetype plugin indent on
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
-set ffs=unix,dos,mac
-colorscheme solarized8
-set background=dark
-"NETRW
-"
-let g:netrw_list_hide= '.*\.swp$'
-"FUNCTIONALITY
-"FINDING FILES
-"
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
-"Search down into subfolders
-"Providees tab-completion for all file-related tasks
-set path+=**
+"Show commands at the bottom line"
+set showcmd
+"Turn on language syntax
+syntax on
+"Detect file types and indent
+filetype indent on
+"Set cursor row & column
+set cursorline
+"Set colors for cursorline
+hi clear CursorLine
+hi link CursorLine CursorColumn
+set cursorcolumn
+"Set variable to control size of tabs and indets
+let indent=2
+"Set tab width to 8 columns
+set tabstop=8
+"Set softabstop to 2
+let &softtabstop=indent
+"Set shift width to indent variable
+let &shiftwidth=indent
+"Use space characters instead of tabs
+set expandtab
+" WILDMENU ----------------------------------------------- {{{
+"Enable auto completion menu after pressing TAB
 set wildmenu
-set wildignore+=**/node_modules/**
-
-"FILE BROWSING
-"
-let g:netrw_banner=0
-let g:netrw_altv=1
-let g:netrw_liststyle=3
-
-"LIGHTLINE
-
-set laststatus=2
-"PACKAGES
-packadd! matchit
-colo solarized8
-"MAPPING
-
+"Make wildmenu behave like similar to Bash completion
+set wildmode=list:longest
+"Wildmenu will ignore files with the following extension
+set wildignore+=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+"Ignore folder when searching in multiple folder
+set wildignore+=**/node_modules/**,**/venv/**
+" }}}
+"Set colorscheme for vim
+colorscheme desert
+" VIMSCRIPT ---------------------------------------------- {{{
+" Enable the marker method of folding for vim file
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+set foldmethod=indent
