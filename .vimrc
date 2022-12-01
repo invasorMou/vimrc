@@ -47,13 +47,18 @@ set foldmethod=indent
 " Prevent files from being totally folded
 set foldlevel=1
 
+" FILE SPECIFIC CONFIGS ---------------------------------------------------- {{{
+
+" VIM FILES ---------------------------------------------------- {{{
 " Enable the marker method of folding for vim file
 augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
   autocmd FileType vim setlocal foldlevel=0
 augroup END
+" }}}
 
+" HTML FILES ---------------------------------------------------- {{{
 augroup filetype_html
   autocmd!
   autocmd FileType vim setlocal foldlevel=2
@@ -61,6 +66,8 @@ augroup filetype_html
   let &softtabstop = indent
   let &shiftwidth = indent
 augroup END
+" }}}
+" }}}
 
 " WILDMENU ----------------------------------------------- {{{
 
@@ -98,6 +105,9 @@ nnoremap H 0
 
 " Move cursor to end of the line
 nnoremap L $
+
+" Grep operator for word under the cursor
+nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>:redraw!<cr>
 
 " }}}
 
@@ -145,4 +155,14 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " }}}
 
+" STATUS LINE CONGIF --------------------------------------------------- {{{
+"show status line all the time
+set laststatus=2
 
+set statusline=%f             " Path to the file
+set statusline+=\ -\          " Separator
+set statusline+=%Y            " Filetype of the file
+set statusline+=%=%l          " Current line
+set statusline+=:             " Separator
+set statusline+=%c            " Column number
+" }}}
