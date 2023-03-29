@@ -2,6 +2,7 @@
 "Mou's VimRC
 """"""""""""""""""""""""""""""""""""""
 
+" BASIC CONFIGURATION {{{
 "Show line's number in file
 set number
 
@@ -44,6 +45,7 @@ set expandtab
 "Set colorscheme for vim
 colorscheme desert
 
+" }}}
 
 " FILE SPECIFIC CONFIGS ---------------------------------------------------- {{{
 
@@ -83,9 +85,11 @@ set wildignore+=**/node_modules/**,**/venv/**
 
 " }}}
 
+" LEADER {{{
 " Set leader key for custom mappins
 let mapleader=","
 let maplocalleader="\\"
+" }}}
 
 " NORMAL MODE MAPPINS ------------------------------------------------- {{{
 
