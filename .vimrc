@@ -5,13 +5,14 @@
 "Show line's number in file
 set number
 
-"Show relative number to current line"
+"Show relative number to current line
 set relativenumber
 
-"Show commands at the bottom line"
+"Show commands at the bottom line
 set showcmd
 
 "Turn on language syntax
+"The docs had a lot of info related to syntax
 syntax on
 
 "Detect file types and indent
@@ -43,9 +44,6 @@ set expandtab
 "Set colorscheme for vim
 colorscheme desert
 
-set foldmethod=indent
-" Prevent files from being totally folded
-set foldlevel=1
 
 " FILE SPECIFIC CONFIGS ---------------------------------------------------- {{{
 
@@ -61,8 +59,8 @@ augroup END
 " HTML FILES ---------------------------------------------------- {{{
 augroup filetype_html
   autocmd!
-  autocmd FileType vim setlocal foldlevel=2
-  let indent = 4
+  autocmd FileType html setlocal foldlevel=2
+  let indent = 2
   let &softtabstop = indent
   let &shiftwidth = indent
 augroup END
@@ -105,9 +103,6 @@ nnoremap H 0
 
 " Move cursor to end of the line
 nnoremap L $
-
-" Grep operator for word under the cursor
-nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>:redraw!<cr>
 
 " }}}
 
