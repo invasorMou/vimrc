@@ -92,7 +92,8 @@ let g:netrw_banner=0
 let g:netrw_browse_split=4
 
 let g:netrw_winsize=75
-
+"Netrw previw will open in vertical split
+let g:netrw_preview=1
 "Netrw open vertical split to right
 let g:netrw_altv=1
 
